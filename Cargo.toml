@@ -33,11 +33,14 @@ namkuzu-storage = { path = "crates/namkuzu-storage" }
 namkuzu-ui = { path = "crates/namkuzu-ui" }
 namkuzu-wiki = { path = "crates/namkuzu-wiki" }
 
-# Databse
+# Database
 surrealdb = { version = "4.0.1" }
-tokio = "1.54.1"
 
 # Async runtime
+tokio = "1.54.1"
+
+# P2P for collavorative feature
+iroh = "1.5.0"
 
 #
 tracing = "0.1.44"
