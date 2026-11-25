@@ -1,0 +1,89 @@
+[workspace]
+members = ["crates/*", "apps/*", "xtask"]
+resolver = "3"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.94"
+authors = ["Yalla Nkardaz"]
+license = "MIT"
+categories = []
+keywords = []
+# homepage = "https://github.com/Namkuzu"
+# repository = "https://github.com/Namkuzu/Core"
+
+[workspace.dependencies]
+# Workspace
+namkuzu-assets = { path = "crates/namkuzu-assets" }
+namkuzu-config = { path = "crates/namkuzu-config" }
+namkuzu-db = { path = "crates/namkuzu-db" }
+namkuzu-editor = { path = "crates/namkuzu-editor" }
+namkuzu-export = { path = "crates/namkuzu-export" }
+namkuzu-extensions = { path = "crates/namkuzu-extensions" }
+namkuzu-gaitha-integration = { path = "crates/namkuzu-gaitha-integration" }
+namkuzu-ipc = { path = "crates/namkuzu-ipc" }
+namkuzu-l10n = { path = "crates/namkuzu-l10n" }
+namkuzu-markup = { path = "crates/namkuzu-markup" }
+namkuzu-model = { path = "crates/namkuzu-model" }
+namkuzu-protocol = { path = "crates/namkuzu-protocol" }
+namkuzu-renderer = { path = "crates/namkuzu-renderer" }
+namkuzu-search = { path = "crates/namkuzu-search" }
+namkuzu-storage = { path = "crates/namkuzu-storage" }
+namkuzu-ui = { path = "crates/namkuzu-ui" }
+namkuzu-wiki = { path = "crates/namkuzu-wiki" }
+
+# Databse
+surrealdb = { version = "4.0.1" }
+tokio = "1.54.1"
+
+# Async runtime
+
+#
+tracing = "0.1.44"
+axum = "0.8.9"
+tower = "0.5.3"
+reqwest = "0.13.5"
+tantivy = "0.27.0"
+image = "0.25.10"
+
+# Data
+serde = { version = "1.0.229", features = ["derive"] }
+ron = "0.12.3"
+# Localization
+fluent-bundle = "0.16.0"
+fluent-langneg = "0.14.2"
+unic-langid = "0.9.6"
+# Scripting
+rune = "0.14.2"
+# GUI
+dioxus = { version = "0.7.10", features = [] }
+dioxus-html-macro = "0.3.0"
+
+gloo-timers = { version = "0.4.0", features = ["futures"] }
+gloo-net = { version = "0.8.0" }
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+
+[workspace.lints.clippy]
+all = "warn"
+pedantic = "warn"
+nursery = "warn"
+unwrap_used = "warn"
+expect_used = "warn"
+panic = "warn"
+collapsible_if = "warn"
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+debug = false
+incremental = false
+
+[profile.web-release]
+inherits = "release"
+opt-level = "z"
+lto = true
+panic = "abort"
